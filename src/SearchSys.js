@@ -7,7 +7,7 @@ class SearchSys extends Component{
     titles: [],
   }
 
-  autoComp = async (e) => {
+  autoCompSearch = async (e) => {
     const input = e.target.value;
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${input}`;
     const call_api = await fetch(url);
@@ -15,16 +15,16 @@ class SearchSys extends Component{
 
     const titles = [];
     if (data.results){
-      for (let i = 0; i<5; i++){
+      for (let i = 0; i<Math.min(5,data.results.length); i++){
         titles.push(data.results[i].title);
       }
     }
     this.setState({
       titles: titles
     })
-
-    console.log(this.state.titles)
   }
+
+  
   
   render(){
     return (
@@ -37,7 +37,7 @@ class SearchSys extends Component{
             id = 'searchInput'
             name = 'searchInput'
             placeholder='Search movie...'
-            onKeyUp={this.autoComp}
+            onKeyUp={this.autoCompSearch}
           />
           <input
             type = 'submit'
@@ -47,7 +47,7 @@ class SearchSys extends Component{
         </form>
         <div className='autocompRes'>
           {this.state.titles.map(tit => 
-              <p>{tit}</p>
+              <button>{tit}</button>
             ) 
           }
         </div>

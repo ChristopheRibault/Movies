@@ -16,7 +16,6 @@ class App extends Component {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`;
     const call_api = await fetch(url);
     const data = await call_api.json();
-    console.log(data);
 
     this.setState({
       results: data.results,
@@ -24,7 +23,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.results)
     return (
       <div className="App">
         <SearchSys

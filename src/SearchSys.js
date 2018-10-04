@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './SearchSys.css'
 
 const API_KEY='17e0f34221767f1716a0e3a321214fb3';
 
@@ -35,28 +36,32 @@ class SearchSys extends Component{
       <div className='SearchSys'>
         <form  
           onSubmit= {this.props.searchMovies}
+          autoComplete='off'
         >
-          <input 
-            type = 'text'
-            id = 'searchInput'
-            name = 'searchInput'
-            placeholder='Search movie...'
-            onKeyUp={this.autoCompSearch}
-          />
+          <div className='search'>
+            <input 
+              type = 'text'
+              id = 'searchInput'
+              name = 'searchInput'
+              placeholder='Search movie...'
+              onKeyUp={this.autoCompSearch}
+            />
+            {this.state.titles.length > 0 && 
+            <select className='autocompRes' multiple>
+              {this.state.titles.map(tit => 
+                  <option
+                    onClick={this.autoCompFill}
+                  >{tit}</option>
+                ) 
+              }
+            </select>}
+          </div> 
           <input
             type = 'submit'
             id = 'submitButton'
             value = 'Search'
-          />
+          />       
         </form>
-        <div className='autocompRes'>
-          {this.state.titles.map(tit => 
-              <button
-                onClick={this.autoCompFill}
-              >{tit}</button>
-            ) 
-          }
-        </div>
       </div>
     );
   }

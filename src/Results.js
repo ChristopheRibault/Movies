@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 import Card from './Card'
 
 class Results extends Component{
+  
   render(){
+    const results = this.props.results;
+    console.log (results);
     return (
       <div className='Results'>
-        <Card
-          title= {this.props.title}
-          vote_average= {this.props.vote_average}
-          vote_count= {this.props.vote_count}
-          overview= {this.props.overview}
-          image= {this.props.image}
-          id= {this.props.id}
-        />
+        { this.props.results && results.map((movie,i) =>
+          <Card
+            title = {movie.title}
+            vote_average= {movie.vote_average}
+            vote_count= {movie.vote_count}
+            overview= {movie.overview}
+            image= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+            id= {movie.id}
+          />
+        )
+        }
       </div>
     );
   }

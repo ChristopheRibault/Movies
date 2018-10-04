@@ -1,12 +1,17 @@
 .Card{
     display: flex;
     flex-flow: row nowrap;
-    width: 100%;
+    width: 88%;
+    margin: 3%;
+    padding: 3%;
     height: 310px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-shadow: 0 -1px 7px rgb(80, 80, 80) inset;
 }
 
 .Card .content{
-    width: 50%;
+
     display: flex;
     flex-flow: column nowrap;
 }
@@ -16,4 +21,12 @@
     padding: 10px;
     overflow-y: scroll;
     font-size: 0.8em;
+}
+
+img{
+    border-radius: 10px;
+}
+
+h2{
+    padding: 10px;
 }

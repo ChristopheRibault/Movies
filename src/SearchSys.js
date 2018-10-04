@@ -24,7 +24,11 @@ class SearchSys extends Component{
     })
   }
 
-  
+  autoCompFill = async (e) => {
+    const fillWith = e.target.innerHTML;
+    const fillIn = document.getElementById('searchInput');
+    fillIn.value = fillWith;
+  }
   
   render(){
     return (
@@ -47,7 +51,9 @@ class SearchSys extends Component{
         </form>
         <div className='autocompRes'>
           {this.state.titles.map(tit => 
-              <button>{tit}</button>
+              <button
+                onClick={this.autoCompFill}
+              >{tit}</button>
             ) 
           }
         </div>

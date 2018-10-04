@@ -16,7 +16,7 @@ class SearchSys extends Component{
 
     const titles = [];
     if (data.results){
-      for (let i = 0; i<Math.min(5,data.results.length); i++){
+      for (let i = 0; i<data.results.length; i++){
         titles.push(data.results[i].title);
       }
     }

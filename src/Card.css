@@ -1,0 +1,19 @@
+.Card{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: 310px;
+}
+
+.Card .content{
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.Card .content p{
+    text-align: justify;
+    padding: 10px;
+    overflow-y: scroll;
+    font-size: 0.8em;
+}

@@ -8,7 +8,7 @@ class Results extends Component{
     console.log (results);
     return (
       <div className='Results'>
-        { this.props.results && results.map((movie,i) =>
+        { this.props.results && results.map(movie =>
           <Card
             title = {movie.title}
             vote_average= {movie.vote_average}

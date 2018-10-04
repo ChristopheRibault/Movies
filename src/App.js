@@ -8,15 +8,7 @@ const API_KEY='17e0f34221767f1716a0e3a321214fb3';
 class App extends Component {
   state = {
     results: undefined,
-    // title: undefined,
-    // vote_average: undefined,
-    // vote_count: undefined,
-    // overview: undefined,
-    // image: undefined,
-    // id: undefined,
   }
-
-  
 
   searchMovies = async (e) => {
     e.preventDefault();
@@ -28,12 +20,6 @@ class App extends Component {
 
     this.setState({
       results: data.results,
-      // title: data.results[0].title,
-      // vote_average: data.results[0].vote_average,
-      // vote_count: data.results[0].vote_count,
-      // overview: data.results[0].overview,
-      // image: `https://image.tmdb.org/t/p/w200${data.results[0].poster_path}`,
-      // id: data.results[0].id
     })
   }
 
@@ -45,12 +31,6 @@ class App extends Component {
           searchMovies = {this.searchMovies}/>
         <Results
           results = {this.state.results}
-          // title= {this.state.title}
-          // vote_average= {this.state.vote_average}
-          // vote_count= {this.state.vote_count}
-          // overview= {this.state.overview}
-          // image= {this.state.image}
-          // id= {this.state.id}
         />
       </div>
     );

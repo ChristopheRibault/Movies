@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class SearchSys extends Component{
+  autoComp = async (e) => {
+    console.log('ok')
+  }
+  
   render(){
     return (
       <form 
@@ -12,6 +16,7 @@ class SearchSys extends Component{
           id = 'searchInput'
           name = 'searchInput'
           placeholder='Search movie...'
+          onKeyUp={this.autoComp}
         />
         <input
           type = 'submit'

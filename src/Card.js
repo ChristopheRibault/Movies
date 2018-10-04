@@ -6,14 +6,15 @@ class Card extends Component{
       <div className='Card'>
         <h2>{this.props.title}</h2>
         {this.props.title && 
-        <span>
-          Average: {this.props.vote_average}
-          &nbsp;over {this.props.vote_count} votes.
-        </span>
+            <span>
+            Average: {this.props.vote_average}
+            &nbsp;over {this.props.vote_count} votes.
+            </span>
         }
         <p>{this.props.overview}</p>
         <img src={this.props.image} alt={this.props.title}/>
-      </div>
+				<hr/>
+			</div>
     );
   }
 }

@@ -34,8 +34,22 @@ h2{
 }
 
 .trailerLink{
-    width: 50%;
     border: none;
     padding: 10px;
     cursor: pointer;
+} 
+
+.mod{
+    width: 50%;
 }
+
+.modal-main {
+position:fixed;
+background: white;
+width: 80%;
+height: auto;
+top:50%;
+left:50%;
+transform: translate(-50%,-50%);
+}
+ 

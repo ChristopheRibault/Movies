@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
-import YouTube from 'react-youtube';
+import Modal from './Modal';
 import './Card.css';
 
 const API_KEY = '17e0f34221767f1716a0e3a321214fb3';
 
 class Card extends Component{
+  state = {
+    videoId: undefined,
+    show: false
+  }
 
   showTrailer = async (e) =>{
     const url = `https://api.themoviedb.org/3/movie/${this.props.id}/videos?api_key=${API_KEY}`
     const api_call = await fetch(url);
     const data = await api_call.json();
-    const videoId = data.results[0].id;
-    console.log(videoId);
+    const videoId = data.results[0].key;
+    this.setState({
+      videoId: videoId,
+      show: true
+    })
+  }
+
+  handleClose = () =>{
+    this.setState({
+      videoId: undefined,
+      show: false
+    })
   }
 
   render(){
@@ -27,12 +41,20 @@ class Card extends Component{
               </span>
           }
           <p>{this.props.overview}</p>
-          <button 
-            className='trailerLink'
-            onClick={this.showTrailer}
-          >See movie trailer
-          </button>
+          <div className='mod'>
+            <Modal
+              show={this.state.show?'modal display-block':'modal display-none'}
+              videoId={this.state.videoId}
+              handleClose={this.handleClose}
+            />
+            <button 
+              className='trailerLink'
+              onClick={this.showTrailer}
+            >See movie trailer
+            </button>
+          </div>
         </div>
+
 			</div>
     );
   }

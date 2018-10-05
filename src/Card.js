@@ -14,7 +14,12 @@ class Card extends Component{
     const url = `https://api.themoviedb.org/3/movie/${this.props.id}/videos?api_key=${API_KEY}`
     const api_call = await fetch(url);
     const data = await api_call.json();
-    const videoId = data.results[0].key;
+    let videoId = data.results[0]?data.results[0].key:undefined;
+    for (let i = data.results.length-1; i>=0; i--){
+      if (data.results[i].name.toLowerCase().includes('trailer')){
+        videoId = data.results[i].key;
+      }
+    }
     this.setState({
       videoId: videoId,
       show: true

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import YouTube from 'react-youtube';
-import './Modal.css'
+import './Modal.css' 
 
 class Modal extends Component{
  
@@ -9,12 +9,12 @@ class Modal extends Component{
     return (
       <div className={this.props.show}>
         <section className="modal-main">
-          <button onClick={this.props.handleClose}>X</button>
           <div className='video' id='video'>
             <YouTube
               videoId={this.props.videoId}
-            />
+            /> 
           </div>
+          <button onClick={this.props.handleClose}>Close</button>
         </section>
       </div>
     );

@@ -5,7 +5,6 @@ import './Modal.css'
 class Modal extends Component{
  
   render(){
-    console.log(this.props.show)
     return (
       <div className={this.props.show}>
         <section className="modal-main">

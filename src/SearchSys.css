@@ -1,24 +1,17 @@
-.search{
-    display: flex;
-    flex-flow: column nowrap;
-    width: 60%;
-    max-width: 400px;
-    height: 100%;
-}
-
 form{
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-start;
+    margin-right: 10px;
+    width: 100%;
 }
 
-.SearchSys{
-    width: 100%;
-    height: 150px;
-    background-color: rgb(108, 172, 231);
-    padding-top: 10px;
-    margin-bottom: 10px;
+#searchInput{
+    height: 50px;
+    padding: 0 10px;
+    border: none;
+    background-color: rgb(194, 194, 194);
 }
 
 #submitButton{
@@ -28,19 +21,35 @@ form{
     border-radius: 10px;
     margin-left: 10px;
     background-color: rgb(5, 28, 105);
-    color: white;
+    color: rgb(194, 194, 194);
     font-size: 1em;
     font-weight: bold;
     text-transform: uppercase;
     box-shadow: 0 5px 10px rgb(82, 101, 161) inset, 0 -5px 10px rgb(2, 12, 48) inset;
+    cursor: pointer;
 }
 
-#submitButton:hover{
-    cursor: pointer;
+.search{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 select{
     border: none;
     background-color: rgb(171, 200, 228);
+}
+
+.autoCompRes{
+    width: 100%;
+    background-color: white;
+    position: float;
+}
+
+.autoCompLig{
+    border-bottom: 1px solid rgb(194, 194, 194);
+    padding: 2px 0;
+    cursor: pointer;
 }
 

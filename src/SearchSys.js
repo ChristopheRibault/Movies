@@ -16,7 +16,7 @@ class SearchSys extends Component{
 
     const titles = [];
     if (data.results){
-      for (let i = 0; i<data.results.length; i++){
+      for (let i = 0; i<Math.min(data.results.length,5); i++){
         titles.push(data.results[i].title);
       }
     }
@@ -33,36 +33,40 @@ class SearchSys extends Component{
   
   render(){
     return (
-      <div className='SearchSys'>
         <form  
           onSubmit= {this.props.searchMovies}
           autoComplete='off'
         >
           <div className='search'>
-            <input 
-              type = 'text'
-              id = 'searchInput'
-              name = 'searchInput'
-              placeholder='Search movie...'
-              onKeyUp={this.autoCompSearch}
-            />
+            <div className='searchInput'>
+              <input 
+                type = 'text'
+                id = 'searchInput'
+                name = 'searchInput'
+                placeholder='Search movie...'
+                onKeyUp={this.autoCompSearch}
+              />
+            </div>
             {this.state.titles.length > 0 && 
-            <select className='autocompRes' multiple>
-              {this.state.titles.map(tit => 
-                  <option
+            <div className='autoCompRes'>
+              {this.state.titles.map((tit,i) => 
+                  <div
+                    className='autoCompLig'
+                    key={`autoComp-${i}`}
                     onClick={this.autoCompFill}
-                  >{tit}</option>
+                  >{tit}</div>
                 ) 
               }
-            </select>}
-          </div> 
-          <input
-            type = 'submit'
-            id = 'submitButton'
-            value = 'Search'
-          />       
+            </div>}
+          </div>
+          <div className='submit'>
+            <input
+              type = 'submit'
+              id = 'submitButton'
+              value = 'Search'
+            />
+          </div>     
         </form>
-      </div>
     );
   }
 }

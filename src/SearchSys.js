@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './SearchSys.css'
+import {} from '@material-ui/core';
+import './SearchSys.css';
 
 const API_KEY='17e0f34221767f1716a0e3a321214fb3';
 
@@ -60,11 +61,7 @@ class SearchSys extends Component{
             </div>}
           </div>
           <div className='submit'>
-            <input
-              type = 'submit'
-              id = 'submitButton'
-              value = 'Search'
-            />
+            <button id='submitButton'>Search</button>
           </div>     
         </form>
     );

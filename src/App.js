@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import SearchSys from './SearchSys';
+import Header from './Header';
+import {} from '@material-ui/core'
+
 import Results from './Results';
 import './App.css';
 
@@ -25,8 +27,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SearchSys
-          searchMovies = {this.searchMovies}/>
+        <Header 
+          searchMovies= {this.searchMovies}
+        />
+        
         <Results
           results = {this.state.results}
         />

@@ -25,15 +25,15 @@
     font-size: 0.8em;
 }
 
-img{
+.Card img{
     border-radius: 10px;
 }
 
-h2{
+.Card h2{
     padding: 10px;
 }
 
-.trailerLink{
+.Card .trailerLink{
     border: none;
     padding: 10px;
     cursor: pointer;

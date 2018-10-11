@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import Home from './Home';
 import {} from '@material-ui/core'
 
 import Results from './Results';
@@ -10,6 +11,7 @@ const API_KEY='17e0f34221767f1716a0e3a321214fb3';
 class App extends Component {
   state = {
     results: undefined,
+    showSearch: false
   }
 
   searchMovies = async (e) => {
@@ -21,6 +23,7 @@ class App extends Component {
 
     this.setState({
       results: data.results,
+      showSearch: true
     })
   }
 
@@ -30,10 +33,14 @@ class App extends Component {
         <Header 
           searchMovies= {this.searchMovies}
         />
-        
-        <Results
-          results = {this.state.results}
-        />
+        {!this.state.showSearch && 
+          <Home/>
+        }
+        {this.state.showSearch &&
+          <Results
+            results = {this.state.results}
+          />
+        }
       </div>
     );
   }

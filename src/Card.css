@@ -1,0 +1,46 @@
+.Card{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 88%;
+    margin: 3%;
+    padding: 3%;
+    height: 310px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-shadow: 0 -1px 7px rgb(80, 80, 80) inset;
+}
+
+.Card .content{
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Card .content p{
+    text-align: justify;
+    padding: 10px;
+    overflow-y: scroll;
+    font-size: 0.8em;
+}
+
+.Card img{
+    border-radius: 10px;
+}
+
+.Card h2{
+    padding: 10px;
+}
+
+.Card .trailerLink{
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+} 
+
+.mod{
+    width: 50%;
+}
+
+ 

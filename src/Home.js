@@ -26,7 +26,7 @@ class Home extends Component {
     return(
       <div className='Home'>
         <section className='popular'>
-          <h2>TOP 5 popular movies</h2>
+          <h2>TOP 10 popular movies</h2>
           <div className='popular-list'>
             {this.state.data.map((movie,i)=>
               <div key={i} className='popular-item'>

@@ -20,11 +20,17 @@ class App extends Component {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`;
     const call_api = await fetch(url);
     const data = await call_api.json();
-
-    this.setState({
-      results: data.results,
-      showSearch: true
-    })
+    if (query){
+      this.setState({
+        results: data.results,
+        showSearch: true
+      })
+    }else{
+      this.setState({
+        results: undefined,
+        showSearch: false
+      })
+    }
   }
 
   render() {

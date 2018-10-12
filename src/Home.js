@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Popular from './Popular';
 import './Home.css';
+
 
 const API_KEY='17e0f34221767f1716a0e3a321214fb3';
 
 class Home extends Component {
   state = {
-    data: []
+    popular: []
   }
 
   findPop = async () =>{
@@ -13,7 +15,7 @@ class Home extends Component {
     const call_api = await fetch(url);
     const data = await call_api.json()
     this.setState({
-      data: data.results.filter((_,i)=>i<10)
+      popular: data.results.filter((_,i)=>i<10)
     })
     console.log(this.state.data)
   }
@@ -25,17 +27,9 @@ class Home extends Component {
   render(){
     return(
       <div className='Home'>
-        <section className='popular'>
-          <h2>TOP 10 popular movies</h2>
-          <div className='popular-list'>
-            {this.state.data.map((movie,i)=>
-              <div key={i} className='popular-item'>
-                <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title}/>
-                <h3>{i+1}- {movie.title}</h3>
-              </div>
-            )}
-          </div>
-        </section>
+        <Popular
+          data={this.state.popular}
+        />
       </div>
     );
   }

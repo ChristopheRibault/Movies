@@ -1,0 +1,14 @@
+.Popular .popular-list{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    overflow-x: scroll;
+}
+
+.Popular .popular-item{
+    margin: 0 10px;
+}
+
+.Popular .popular-item h3{
+    text-transform: uppercase;
+}

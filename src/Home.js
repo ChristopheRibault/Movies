@@ -14,54 +14,27 @@ class Home extends Component {
     upcoming:[]
   }
 
-  findPop = async () =>{
-    const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`;
+  findPop = async (begins,ends) =>{
+    const beginsURL = begins?`&primary_release_date.gte=${begins}`:'';
+    const endsURL = ends?`&primary_release_date.lte=${ends}`:'';
+    const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1${beginsURL}${endsURL}`;
     const call_api = await fetch(url);
-    const data = await call_api.json()
-    this.setState({
-      popular: data.results.filter((_,i)=>i<20)
-    })
-  }
-
-  findLatest = async () =>{
-    const ends = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
-    const begins = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()-7}`
-    const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&primary_release_date.gte=${begins}&primary_release_date.lte=${ends}`;
-    const call_api = await fetch(url);
-    const data = await call_api.json()
-    this.setState({
-      latest: data.results.filter((_,i)=>i<20)
-    })
-  }
-
-  findUpcoming = async () =>{
-    const ends = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()+8}`;
-    const begins = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()+1}`
-    const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&primary_release_date.gte=${begins}&primary_release_date.lte=${ends}`;
-    const call_api = await fetch(url);
-    const data = await call_api.json()
-    this.setState({
-      upcoming: data.results.filter((_,i)=>i<20)
-    })
-  }
-
-  componentDidMount(){
-    this.findPop();
-    this.findLatest();
-    this.findUpcoming();
+    const data = await call_api.json();
+    const res = data.results.filter((_,i)=>i<20)
+    return res;
   }
 
   render(){
     return(
       <div className='Home'>
         <Popular
-          data={this.state.popular}
+          findPop={this.findPop}
         />
         <LastReleased 
-          data={this.state.latest}
+          findPop={this.findPop}
         />
-        <Upcoming 
-          data={this.state.upcoming}
+        <Upcoming
+          findPop={this.findPop} 
         />
       </div>
     );

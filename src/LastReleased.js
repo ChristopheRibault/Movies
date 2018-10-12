@@ -5,7 +5,7 @@ export default class Popular extends Component{
 
   render(){
     return(
-      <section className='LastReleased'>
+      <section className='LastReleased' id='LastReleased'>
         <h2>Released this week</h2>
         <div className='list'>
           {this.props.data.map((movie,i)=>

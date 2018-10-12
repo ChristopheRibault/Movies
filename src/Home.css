@@ -2,18 +2,23 @@
     margin-top: 100px;
 }
 
-.Home .popular-list{
+.Home section{
+    width: 98vw;
+}
+
+.Home .list{
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
+    /* overflow-x: hidden; */
     overflow-x: scroll;
 }
 
-.Home .popular-item{
+.Home .list .item {
     margin: 0 10px;
 }
 
-.Home .popular-item h3{
+.Home .list .item h3{
     text-transform: uppercase;
 }
 

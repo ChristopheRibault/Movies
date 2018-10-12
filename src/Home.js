@@ -1,41 +1,41 @@
 import React, { Component } from 'react';
+import Popular from './Popular';
+import LastReleased from './LastReleased';
+import Upcoming from './Upcoming';
 import './Home.css';
+
 
 const API_KEY='17e0f34221767f1716a0e3a321214fb3';
 
 class Home extends Component {
   state = {
-    data: []
+    popular: [],
+    latest:[],
+    upcoming:[]
   }
 
-  findPop = async () =>{
-    const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1`;
+  findPop = async (begins,ends) =>{
+    const beginsURL = begins?`&primary_release_date.gte=${begins}`:'';
+    const endsURL = ends?`&primary_release_date.lte=${ends}`:'';
+    const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1${beginsURL}${endsURL}`;
     const call_api = await fetch(url);
-    const data = await call_api.json()
-    this.setState({
-      data: data.results.filter((_,i)=>i<10)
-    })
-    console.log(this.state.data)
-  }
-
-  componentDidMount(){
-    this.findPop();
+    const data = await call_api.json();
+    const res = data.results.filter((_,i)=>i<20)
+    return res;
   }
 
   render(){
     return(
       <div className='Home'>
-        <section className='popular'>
-          <h2>TOP 10 popular movies</h2>
-          <div className='popular-list'>
-            {this.state.data.map((movie,i)=>
-              <div key={i} className='popular-item'>
-                <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title}/>
-                <h3>{i+1}- {movie.title}</h3>
-              </div>
-            )}
-          </div>
-        </section>
+        <Popular
+          findPop={this.findPop}
+        />
+        <LastReleased 
+          findPop={this.findPop}
+        />
+        <Upcoming
+          findPop={this.findPop} 
+        />
       </div>
     );
   }

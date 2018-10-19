@@ -17,7 +17,7 @@ class SearchSys extends Component{
 
     const titles = [];
     if (data.results){
-      for (let i = 0; i<Math.min(data.results.length,5); i++){
+      for (let i = 0; i<data.results.length; i++){
         titles.push(data.results[i].title);
       }
     }
@@ -34,35 +34,32 @@ class SearchSys extends Component{
   
   render(){
     return (
-        <form  
+        <form
+          className='SearchSys'
           onSubmit= {this.props.searchMovies}
           autoComplete='off'
         >
-          <div className='search'>
-            <div className='searchInput'>
-              <input 
-                type = 'text'
-                id = 'searchInput'
-                name = 'searchInput'
-                placeholder='Search movie...'
-                onKeyUp={this.autoCompSearch}
-              />
-            </div>
-            {this.state.titles.length > 0 && 
-            <div className='autoCompRes'>
-              {this.state.titles.map((tit,i) => 
-                  <div
-                    className='autoCompLig'
-                    key={`autoComp-${i}`}
-                    onClick={this.autoCompFill}
-                  >{tit}</div>
-                ) 
-              }
-            </div>}
-          </div>
-          <div className='submit'>
-            <button id='submitButton'>Search</button>
-          </div>     
+          <input 
+            className='searchInput'
+            type = 'text'
+            id = 'searchInput'
+            list = 'datas'
+            name = 'searchInput'
+            placeholder='Search movie...'
+            onKeyUp={this.autoCompSearch}
+          />
+          {this.state.titles.length > 0 && 
+          <datalist id= 'datas' className='autoCompRes'>
+            {this.state.titles.map((tit,i) => 
+                <option
+                  className='autoCompLig'
+                  key={`autoComp-${i}`}
+                  onClick={this.autoCompFill}
+                >{tit}</option>
+              ) 
+            }
+          </datalist>}
+          <button id='submitButton'>Search</button>
         </form>
     );
   }

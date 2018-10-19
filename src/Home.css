@@ -1,9 +1,26 @@
 .Home{
-    margin-top: 100px;
+    margin-top: 10px;
+}
+
+.Home h2{
+    font-size: 2em;
+    color: rgb(133, 65, 71);
+    text-transform: uppercase;
 }
 
 .Home section{
     width: 98vw;
+}
+
+::-webkit-scrollbar{
+    width: 2px;
+    height: 1px;
+    background-color: black; 
+}
+
+::-webkit-scrollbar-thumb{
+    border: 1px rgb(29, 29, 29) solid;
+    border-radius: 10px;
 }
 
 .Home .list{
@@ -12,6 +29,7 @@
     justify-content: flex-start;
     /* overflow-x: hidden; */
     overflow-x: scroll;
+
 }
 
 .Home .list .item {

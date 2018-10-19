@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Home from './Home';
-import {} from '@material-ui/core'
-
 import Results from './Results';
 import './App.css';
 

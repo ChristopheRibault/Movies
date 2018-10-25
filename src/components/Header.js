@@ -13,7 +13,7 @@ export default class Header extends Component {
           <h1>Movies</h1>
         </div>
         <div className="searchBar">
-          <SearchSys searchMovies={this.props.searchMovies} />
+          <SearchSys/>
         </div>
       </header>
     );

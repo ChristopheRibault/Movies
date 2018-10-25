@@ -1,0 +1,4 @@
+export const SEARCH_MOVIES = 'SEARCH_MOVIES';
+export const AUTOCOMP_SEARCH = 'AUTOCOMP_SEARCH';
+export const SHOW_TRAILER = 'SHOW_TRAILER';
+export const CLOSE_TRAILER = 'CLOSE_TRAILER';

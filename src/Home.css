@@ -27,9 +27,7 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
-    /* overflow-x: hidden; */
     overflow-x: scroll;
-
 }
 
 .Home .list .item {
@@ -39,5 +37,4 @@
 .Home .list .item h3{
     text-transform: uppercase;
 }
-
 

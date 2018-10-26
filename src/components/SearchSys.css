@@ -1,0 +1,30 @@
+.SearchSys{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100%;
+}
+
+#searchInput{
+    margin-left: 10px;
+    height: 70%;
+    padding: 0 10px;
+    border: none;
+    background-color: rgb(194, 194, 194);
+}
+
+#submitButton{
+    height: 70%;
+    margin: 0 10px;
+    border: none;
+    background-color: (194, 194, 194);
+    color:black;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+

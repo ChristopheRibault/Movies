@@ -1,53 +1,28 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Home from './Home';
-import {} from '@material-ui/core'
+import { Provider } from 'react-redux';
+import { Switch, Route } from 'react-router';
 
-import Results from './Results';
-import './App.css';
+import store from './store'
 
-const API_KEY='17e0f34221767f1716a0e3a321214fb3';
+import Header from './components/Header';
+import Home from "./components/Home";
+import Results from "./components/Results";
+
+import "./App.css";
 
 class App extends Component {
-  state = {
-    results: undefined,
-    showSearch: false
-  }
-
-  searchMovies = async (e) => {
-    e.preventDefault();
-    const query = e.target.elements.searchInput.value;
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`;
-    const call_api = await fetch(url);
-    const data = await call_api.json();
-    if (query){
-      this.setState({
-        results: data.results,
-        showSearch: true
-      })
-    }else{
-      this.setState({
-        results: undefined,
-        showSearch: false
-      })
-    }
-  }
 
   render() {
     return (
-      <div className="App">
-        <Header 
-          searchMovies= {this.searchMovies}
-        />
-        {!this.state.showSearch && 
-          <Home/>
-        }
-        {this.state.showSearch &&
-          <Results
-            results = {this.state.results}
-          />
-        }
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/Results' component={Results} />
+          </Switch>
+        </div>
+      </Provider>
     );
   }
 }

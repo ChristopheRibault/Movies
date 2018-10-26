@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import Card from './Card'
-import './Results.css'
+import { connect } from 'react-redux';
+
+import Card from './Card';
+
+import './Results.css';
 
 class Results extends Component{
-  
   render(){
     const results = this.props.results;
     return (
@@ -26,4 +28,8 @@ class Results extends Component{
   }
 }
 
-export default Results;
+const mapStateToProps = state => ({
+  results: state.search.results,
+});
+
+export default connect(mapStateToProps)(Results);

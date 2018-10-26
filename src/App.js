@@ -17,13 +17,10 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <Header />
-          <Results />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/Results' component={Results} />
           </Switch>
-          {/* {!this.props.showSearch && <Home />} */}
-          {/* {this.props.showSearch && <Results results={this.state.results} />} */}
         </div>
       </Provider>
     );

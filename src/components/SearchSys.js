@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { searchMovies, autoCompSearch } from "../actions/searchActions";
 import "./SearchSys.css";
 
 class SearchSys extends Component {
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  redirectToTarget = () => {
+    this.context.router.history.push(`/Results`);
+  };
+
   handleChange = e => {
     this.props.autoCompSearch(e);
   };
@@ -13,9 +22,11 @@ class SearchSys extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.searchMovies(e);
+    this.redirectToTarget();
   };
 
   render() {
+    console.log(this);
     return (
       <form
         className="SearchSys"
@@ -44,9 +55,7 @@ class SearchSys extends Component {
             ))}
           </datalist>
         )}
-        <Link to="/Results">
           <button id="submitButton">Search</button>
-        </Link>
       </form>
     );
   }

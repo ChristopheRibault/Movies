@@ -1,4 +1,4 @@
-import { SEARCH_MOVIES, AUTOCOMP_SEARCH,  } from "./types";
+import { SEARCH_MOVIES, AUTOCOMP_SEARCH } from "./types";
 import axios from "axios";
 
 const API_KEY = "17e0f34221767f1716a0e3a321214fb3";

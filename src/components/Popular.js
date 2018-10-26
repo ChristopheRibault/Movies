@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Popular extends Component{
+import { FETCH_POPULAR } from '../actions/types';
+import { findPop } from '../actions/homeActions';
 
-  state = {
-    data:[]
-  }
+class Popular extends Component{
   
   componentWillMount(){
-    this.props.findPop()
-      .then(data => this.setState({
-        data:data
-      }))
+    this.props.findPop(FETCH_POPULAR)
   }
 
   render(){
+    console.log(this.props)
     return(
       <section className='Popular' id='Popular'>
         <h2>TOP 20 popular movies</h2>
-        {this.state.data &&
+        {this.props.popularMovies &&
         <div className='list'>
-          {this.state.data.map((movie,i)=>
+          {this.props.popularMovies.map((movie,i)=>
             movie.poster_path &&
             <div key={`popular-${i}`} className='item'>             
               <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title}/>
@@ -33,3 +31,9 @@ export default class Popular extends Component{
     );
   }
 }
+
+const mapStateToProps = state => ({
+  popularMovies: state.home.popularMovies,
+});
+
+export default connect(mapStateToProps, { findPop })(Popular);

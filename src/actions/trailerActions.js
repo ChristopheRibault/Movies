@@ -1,7 +1,7 @@
 import { SHOW_TRAILER, CLOSE_TRAILER } from "./types";
 import axios from "axios";
 
-const API_KEY = "17e0f34221767f1716a0e3a321214fb3";
+import API_KEY from '../API_KEY';
 
 export const showTrailer = id => dispatch => {
   const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;

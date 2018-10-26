@@ -1,9 +1,7 @@
 import axios from "axios";
-
-const API_KEY = "17e0f34221767f1716a0e3a321214fb3";
+import API_KEY from '../API_KEY';
 
 export const findPop = (type, begins, ends) => dispatch => {
-	console.log('va dans findPop')
   let beginsDate, beginsFormat, endsDate, endsFormat;
 
   if (begins) {

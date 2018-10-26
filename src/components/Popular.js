@@ -11,7 +11,6 @@ class Popular extends Component{
   }
 
   render(){
-    console.log(this.props)
     return(
       <section className='Popular' id='Popular'>
         <h2>TOP 20 popular movies</h2>

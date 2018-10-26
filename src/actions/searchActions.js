@@ -1,7 +1,7 @@
 import { SEARCH_MOVIES, AUTOCOMP_SEARCH } from "./types";
 import axios from "axios";
 
-const API_KEY = "17e0f34221767f1716a0e3a321214fb3";
+import API_KEY from '../API_KEY';
 
 export const searchMovies = e => dispatch => {
   const query = e.target.elements.searchInput.value;

@@ -19,6 +19,7 @@ class Header extends Component {
 
         <ul className='nav-menu'>
           <li><Link to='/'>Home</Link></li>
+          <li><Link to='/Browse'>Browse</Link></li>
           <li><Link to='/Contact'>Contact Us</Link></li>
         </ul>
 

@@ -1,21 +1,21 @@
-import { SHOW_TRAILER, CLOSE_TRAILER } from "../actions/types";
+import { SHOW_TRAILER, CLOSE_TRAILER } from '../actions/types';
 
 const initialState = {
-  videoID: "",
-  displayVideo: false
+  videoID: '',
+  displayVideo: false,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case SHOW_TRAILER:
       return {
         videoID: action.videoId,
-        displayVideo: action.displayVideo
+        displayVideo: action.displayVideo,
       };
     case CLOSE_TRAILER:
       return {
         videoID: action.videoId,
-        displayVideo: action.displayVideo
+        displayVideo: action.displayVideo,
       };
     default:
       return state;

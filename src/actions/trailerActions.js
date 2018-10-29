@@ -1,29 +1,30 @@
-import { SHOW_TRAILER, CLOSE_TRAILER } from "./types";
-import axios from "axios";
+import axios from 'axios';
+import { SHOW_TRAILER, CLOSE_TRAILER } from './types';
+
 
 import API_KEY from '../API_KEY';
 
-export const showTrailer = id => dispatch => {
+export const showTrailer = id => (dispatch) => {
   const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
-  axios.get(url).then(res => {
+  axios.get(url).then((res) => {
     let videoId = res.data.results[0] ? res.data.results[0].key : undefined;
-    for (let i = res.data.results.length - 1; i >= 0; i--) {
-      if (res.data.results[i].name.toLowerCase().includes("trailer")) {
+    for (let i = res.data.results.length - 1; i >= 0; i -= 1) {
+      if (res.data.results[i].name.toLowerCase().includes('trailer')) {
         videoId = res.data.results[i].key;
       }
-		}
+    }
     dispatch({
       type: SHOW_TRAILER,
-      videoId: videoId,
-      displayVideo: true
+      videoId,
+      displayVideo: true,
     });
   });
 };
 
-export const closeTrailer = () => dispatch =>{
-	dispatch({
-		type: CLOSE_TRAILER,
-		videoId: undefined,
-		show: false
-	})
-}
+export const closeTrailer = () => (dispatch) => {
+  dispatch({
+    type: CLOSE_TRAILER,
+    videoId: undefined,
+    show: false,
+  });
+};

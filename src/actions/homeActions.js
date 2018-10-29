@@ -1,35 +1,37 @@
-import axios from "axios";
+import axios from 'axios';
 import API_KEY from '../API_KEY';
 
-export const findPop = (type, begins, ends) => dispatch => {
-  let beginsDate, beginsFormat, endsDate, endsFormat;
+const findPop = (type, begins, ends) => (dispatch) => {
+  let beginsDate;
+  let beginsFormat;
+  let endsDate;
+  let endsFormat;
 
   if (begins) {
     beginsDate = new Date();
     beginsDate.setDate(beginsDate.getDate() + begins);
-    beginsFormat = `${beginsDate.getFullYear()}-${beginsDate.getMonth() +
-      1}-${beginsDate.getDate()}`;
+    beginsFormat = `${beginsDate.getFullYear()}-${beginsDate.getMonth() + 1}-${beginsDate.getDate()}`;
   } else {
-    beginsFormat = "";
+    beginsFormat = '';
   }
   if (ends) {
     endsDate = new Date();
     endsDate.setDate(endsDate.getDate() + ends);
-    endsFormat = `${endsDate.getFullYear()}-${endsDate.getMonth() +
-      1}-${endsDate.getDate()}`;
+    endsFormat = `${endsDate.getFullYear()}-${endsDate.getMonth() + 1}-${endsDate.getDate()}`;
   } else {
-    endsFormat = "";
+    endsFormat = '';
   }
 
-  const beginsURL = begins ? `&primary_release_date.gte=${beginsFormat}` : "";
-  const endsURL = ends ? `&primary_release_date.lte=${endsFormat}` : "";
+  const beginsURL = begins ? `&primary_release_date.gte=${beginsFormat}` : '';
+  const endsURL = ends ? `&primary_release_date.lte=${endsFormat}` : '';
   const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1${beginsURL}${endsURL}`;
-	axios.get(url)
-	.then(res => {
-		dispatch({
-      type: type,
-      movies: res.data.results
+  axios.get(url)
+    .then((res) => {
+      dispatch({
+        type,
+        movies: res.data.results,
+      });
     });
-	}
-	)
 };
+
+export default findPop;

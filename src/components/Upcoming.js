@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { FETCH_UPCOMING } from "../actions/types";
-import { findPop } from "../actions/homeActions";
+import findPop from "../actions/homeActions";
 
 class Upcoming extends Component {
   componentWillMount() {

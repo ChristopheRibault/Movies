@@ -7,10 +7,9 @@ import Upcoming from './Upcoming';
 import './Home.css';
 
 class Home extends Component {
-  
-  render(){
-    return(
-      <div className='Home'>
+  render() {
+    return (
+      <div className="Home">
         <Popular />
         <LastReleased />
         <Upcoming />

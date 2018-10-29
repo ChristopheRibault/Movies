@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import SearchSys from "./SearchSys";
+import SearchSys from './SearchSys';
 
-import logo from "./logo.png";
-import "./Header.css";
+import logo from './logo.png';
+import './Header.css';
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
     return (
       <header>
@@ -17,6 +17,10 @@ export default class Header extends Component {
           </div>
         </Link>
 
+        <Link to='/contact'>
+          Contact Us
+        </Link>
+
         <div className="searchBar">
           <SearchSys />
         </div>
@@ -24,3 +28,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default Header;

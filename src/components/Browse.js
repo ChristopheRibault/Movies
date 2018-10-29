@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { selectGenre, submitCriterias } from '../actions/browseActions';
+import { selectGenre, submitCriterias, selectAverageVote } from '../actions/browseActions';
 import genre from '../genre';
 
 import Card from './Card';
@@ -10,11 +10,11 @@ class Browse extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.submitCriterias(this.props.genre)
+    this.props.submitCriterias(this.props);
   }
 
   render(){
-    const { selectGenre, browseResults } = this.props;
+    const { selectGenre, selectAverageVote, averageVote, browseResults } = this.props;
     return(
       <div className='Browse'>
         <form onSubmit={this.handleSubmit}>
@@ -24,6 +24,8 @@ class Browse extends Component {
               <option value={g.id} key={g.id}>{g.name}</option>
             )}
           </select>
+          <label htmlFor='avgVote'>Minimum Average Vote : {averageVote}</label>
+          <input id='avgVote' type='range' min='0' max='10' value={averageVote} onChange={selectAverageVote} />
           <input type='submit' value='Search' />
         </form>
         <div className='browseResults'>
@@ -47,7 +49,8 @@ class Browse extends Component {
 
 const mapStateToProps = state => ({
   genre: state.browse.genre,
+  averageVote: state.browse.averageVote,
   browseResults: state.browse.browseResults,
 });
 
-export default connect(mapStateToProps,{ selectGenre, submitCriterias })(Browse);
+export default connect(mapStateToProps,{ selectGenre, selectAverageVote, submitCriterias })(Browse);

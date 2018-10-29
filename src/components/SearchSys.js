@@ -26,7 +26,6 @@ class SearchSys extends Component {
   };
 
   render() {
-    console.log(this);
     return (
       <form
         className="SearchSys"

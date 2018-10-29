@@ -35,3 +35,14 @@ header .searchBar{
     flex-flow: row nowrap;
     justify-content: flex-end;
 }
+
+header .nav-menu{
+    list-style-type: none;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+header .nav-menu li a{
+    color: rgb(194, 194, 194);
+    margin: 10px;
+}

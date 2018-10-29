@@ -17,9 +17,10 @@ class Header extends Component {
           </div>
         </Link>
 
-        <Link to='/contact'>
-          Contact Us
-        </Link>
+        <ul className='nav-menu'>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/Contact'>Contact Us</Link></li>
+        </ul>
 
         <div className="searchBar">
           <SearchSys />

@@ -1,8 +1,10 @@
-import { SELECT_GENRE, SUBMIT_CRITERIAS, SELECT_AVERAGE_VOTE } from '../actions/types';
+import { SELECT_GENRE, SUBMIT_CRITERIAS, SELECT_RELEASE_DATE, SELECT_AVERAGE_VOTE } from '../actions/types';
 
 const initialState = {
   genre: '',
   averageVote: 0,
+  releaseDateFrom: '',
+  releaseDateTo: '',
   browseResults: [],
 };
 
@@ -17,6 +19,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         averageVote: action.averageVote,
+      };
+    case SELECT_RELEASE_DATE:
+      return {
+        ...state,
+        [action.date]: action.value,
       };
     case SUBMIT_CRITERIAS:
       return {

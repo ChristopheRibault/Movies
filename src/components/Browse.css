@@ -1,0 +1,47 @@
+.Browse form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.Browse fieldset {
+  display: flex;
+  flex-flow: column nowrap;
+  border : none;
+  height: 100%;
+}
+
+.Browse label {
+  padding: 10px;
+}
+
+.Browse select {
+  width: 150px;
+  height: 100px;
+  background-color: #000;
+  color: rgb(194, 194, 194);
+  border-radius: 3px;
+  border: none;
+}
+
+.Browse input[type='range']{
+  width: 100%;
+  color: rgb(194, 194, 194);
+}
+
+.Browse input[type='submit']{
+  height: 50px;
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  background-color: rgb(194, 194, 194);
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}

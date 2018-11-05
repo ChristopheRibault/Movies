@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Switch, Route } from 'react-router';
 
-import store from './store'
+import store from './store';
 
 import Header from './components/Header';
 import Home from "./components/Home";

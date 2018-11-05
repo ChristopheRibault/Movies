@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { selectGenre, submitCriterias, selectAverageVote } from '../actions/browseActions';
+import { selectGenre, submitCriterias, selectAverageVote, selectReleaseDate } from '../actions/browseActions';
 import genre from '../genre';
 
 import Card from './Card';
+
+import './Browse.css';
 
 class Browse extends Component {
 
@@ -14,18 +16,29 @@ class Browse extends Component {
   }
 
   render(){
-    const { selectGenre, selectAverageVote, averageVote, browseResults } = this.props;
+    const { selectGenre, selectAverageVote, selectReleaseDate, averageVote, browseResults } = this.props;
     return(
       <div className='Browse'>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor='genre'>Genre</label>
-          <select id='genre' multiple  onChange={selectGenre} >
-            {genre.map(g =>
-              <option value={g.id} key={g.id}>{g.name}</option>
-            )}
-          </select>
-          <label htmlFor='avgVote'>Minimum Average Vote : {averageVote}</label>
-          <input id='avgVote' type='range' min='0' max='10' value={averageVote} onChange={selectAverageVote} />
+          <fieldset>
+            <label htmlFor='genre'>Genre</label>
+            <select id='genre' multiple  onChange={selectGenre} >
+              {genre.map(g =>
+                <option value={g.id} key={g.id}>{g.name}</option>
+              )}
+            </select>
+          </fieldset>
+          <fieldset>
+            <label htmlFor='avgVote'>Minimum Average Vote : {averageVote}</label>
+            <input id='avgVote' type='range' min='0' max='10' step='1' value={averageVote} onChange={selectAverageVote} />
+          </fieldset>
+          <fieldset className='releaseDateInputs'>
+            <h5>Release Date</h5>
+            <label htmlFor='releaseDateFrom'>From</label>
+            <input type='date' id='releaseDateFrom' onChange={selectReleaseDate} />
+            <label htmlFor='releaseDateTo'>To</label>
+            <input type='date' id='releaseDateTo' onChange={selectReleaseDate} />
+          </fieldset>
           <input type='submit' value='Search' />
         </form>
         <div className='browseResults'>
@@ -50,7 +63,9 @@ class Browse extends Component {
 const mapStateToProps = state => ({
   genre: state.browse.genre,
   averageVote: state.browse.averageVote,
+  releaseDateFrom: state.browse.releaseDateFrom,
+  releaseDateTo: state.browse.releaseDateTo,
   browseResults: state.browse.browseResults,
 });
 
-export default connect(mapStateToProps,{ selectGenre, selectAverageVote, submitCriterias })(Browse);
+export default connect(mapStateToProps,{ selectGenre, selectAverageVote, selectReleaseDate, submitCriterias })(Browse);

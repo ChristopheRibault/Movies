@@ -1,9 +1,8 @@
-.Browse form {
+.Browse .inputs {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
   width: 100%;
   margin: 20px 0;
 }
@@ -25,12 +24,29 @@
   background-color: #000;
   color: rgb(194, 194, 194);
   border-radius: 3px;
-  border: none;
+  border: 1px dotted rgb(194, 194, 194);
+  padding: 3px;
 }
 
 .Browse input[type='range']{
   width: 100%;
   color: rgb(194, 194, 194);
+  border-radius: 20px;
+}
+
+.Browse .releaseDateInputs{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.Browse input[type='date']{
+  border: none;
+  background-color: black;
+  color: rgb(194, 194, 194);
+}
+
+input[type="date"]::-webkit-inner-spin-button{
+  display: none;
 }
 
 .Browse input[type='submit']{

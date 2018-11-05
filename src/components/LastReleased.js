@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { FETCH_LASTRELEASED } from '../actions/types';
 import findPop from '../actions/homeActions';
 
+import noImage from './No_image_available.png';
+
 import './Home.css';
 
 class LastReleased extends Component {
@@ -19,12 +21,11 @@ class LastReleased extends Component {
         {lastReleasedMovies && (
           <div className="list">
             {lastReleasedMovies.map(
-              (movie, i) => movie.poster_path && (
+              (movie, i) => (
               <div key={`latest-${movie.id}`} className="item">
                 <img
-                  src={`https://image.tmdb.org/t/p/w200${
-                    movie.poster_path
-                  }`}
+                  className='poster'
+                  src={movie.poster_path?`https://image.tmdb.org/t/p/w200${movie.poster_path}`:noImage}
                   alt={movie.title}
                 />
                 <h3>

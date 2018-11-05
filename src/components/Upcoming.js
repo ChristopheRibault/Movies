@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { FETCH_UPCOMING } from "../actions/types";
 import findPop from "../actions/homeActions";
 
+import noImage from './No_image_available.png';
+
 class Upcoming extends Component {
   componentWillMount() {
     this.props.findPop(FETCH_UPCOMING, 1, 8);
@@ -17,12 +19,11 @@ class Upcoming extends Component {
           <div className="list">
             {this.props.upcomingMovies.map(
               (movie, i) =>
-                movie.poster_path && (
+                (
                   <div key={`upcoming-${i}`} className="item">
                     <img
-                      src={`https://image.tmdb.org/t/p/w200${
-                        movie.poster_path
-                      }`}
+                      className='poster'
+                      src={movie.poster_path?`https://image.tmdb.org/t/p/w200${movie.poster_path}`:noImage}
                       alt={movie.title}
                     />
                     <h3>

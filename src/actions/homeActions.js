@@ -1,5 +1,8 @@
 import axios from 'axios';
-import API_KEY from '../API_KEY';
+
+require('dotenv').config();
+
+const API_KEY = process.env.API_KEY;
 
 const findPop = (type, begins, ends) => (dispatch) => {
   let beginsDate;

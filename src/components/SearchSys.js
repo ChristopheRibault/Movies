@@ -11,8 +11,8 @@ class SearchSys extends Component {
     router: PropTypes.object
   };
 
-  redirectToTarget = () => {
-    this.context.router.history.push(`/Results`);
+  redirectToTarget = (targetUrl) => {
+    this.context.router.history.push(targetUrl);
   };
 
   handleChange = e => {
@@ -22,11 +22,10 @@ class SearchSys extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.searchMovies(e);
-    this.redirectToTarget();
+    this.redirectToTarget(`/Results`);
   };
 
   render() {
-    console.log(this);
     return (
       <form
         className="SearchSys"

@@ -27,6 +27,7 @@
 
 .Card img{
     border-radius: 10px;
+    max-width: 200px;
 }
 
 .Card h2{

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { FETCH_POPULAR } from '../actions/types';
-import { findPop } from '../actions/homeActions';
+import findPop from '../actions/homeActions';
+
+import noImage from './No_image_available.png';
 
 class Popular extends Component{
   
@@ -11,16 +13,18 @@ class Popular extends Component{
   }
 
   render(){
-    console.log(this.props)
     return(
       <section className='Popular' id='Popular'>
         <h2>TOP 20 popular movies</h2>
         {this.props.popularMovies &&
         <div className='list'>
           {this.props.popularMovies.map((movie,i)=>
-            movie.poster_path &&
             <div key={`popular-${i}`} className='item'>             
-              <img src= {`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title}/>
+              <img 
+                className='poster'
+                src={movie.poster_path?`https://image.tmdb.org/t/p/w200${movie.poster_path}`:noImage} 
+                alt={movie.title}
+              />
               <h3>{i+1}- {movie.title}</h3>
             </div>
             

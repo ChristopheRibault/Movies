@@ -1,21 +1,34 @@
-import React, { Component } from "react";
-import SearchSys from "./SearchSys";
-import logo from "./logo.png";
-import "./Header.css";
-import {} from "@material-ui/core";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-export default class Header extends Component {
+import SearchSys from './SearchSys';
+
+import logo from './logo.png';
+import './Header.css';
+
+class Header extends Component {
   render() {
     return (
       <header>
-        <div className="logo">
-          <img src={logo} alt="logo" />
-          <h1>Movies</h1>
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <img src={logo} alt="logo" />
+            <h1>Movies</h1>
+          </div>
+        </Link>
+
+        <ul className='nav-menu'>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/Browse'>Browse</Link></li>
+          <li><Link to='/Contact'>Contact Us</Link></li>
+        </ul>
+
         <div className="searchBar">
-          <SearchSys/>
+          <SearchSys />
         </div>
       </header>
     );
   }
 }
+
+export default Header;

@@ -1,10 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import { FETCH_LASTRELEASED } from "../actions/types";
-import { findPop } from "../actions/homeActions";
+import { FETCH_LASTRELEASED } from '../actions/types';
+import findPop from '../actions/homeActions';
 
-import "./Home.css";
+import noImage from './No_image_available.png';
+
+import './Home.css';
 
 class LastReleased extends Component {
   componentWillMount() {
@@ -12,27 +14,28 @@ class LastReleased extends Component {
   }
 
   render() {
+    const { lastReleasedMovies } = this.props;
     return (
       <section className="LastReleased" id="LastReleased">
         <h2>Released this week</h2>
-        {this.props.lastReleasedMovies && (
+        {lastReleasedMovies && (
           <div className="list">
-            {this.props.lastReleasedMovies.map(
-              (movie, i) =>
-                movie.poster_path && (
-                  <div key={`latest-${i}`} className="item">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w200${
-                        movie.poster_path
-                      }`}
-                      alt={movie.title}
-                    />
-                    <h3>
-                      {i + 1}- {movie.title}
-                    </h3>
-                    <small>Realeased on {movie.release_date}</small>
-                  </div>
-                )
+            {lastReleasedMovies.map(
+              (movie, i) => (
+              <div key={`latest-${movie.id}`} className="item">
+                <img
+                  className='poster'
+                  src={movie.poster_path?`https://image.tmdb.org/t/p/w200${movie.poster_path}`:noImage}
+                  alt={movie.title}
+                />
+                <h3>
+                  {`${i + 1}- ${movie.title}`}
+                </h3>
+                <small>
+                  {`Realeased on ${movie.release_date}`}
+                </small>
+              </div>
+              ),
             )}
           </div>
         )}

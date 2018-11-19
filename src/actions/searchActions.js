@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { SEARCH_MOVIES, AUTOCOMP_SEARCH } from './types';
 
-require('dotenv').config();
-
-const API_KEY = process.env.API_KEY;
+import API_KEY from '../API_KEY';
 
 export const searchMovies = e => (dispatch) => {
   const query = e.target.elements.searchInput.value;

@@ -18,7 +18,6 @@ class Card extends Component{
   }
 
   render(){
-    console.log(`image de ${this.props.title} :`, this.props.image)
     return (
       <div className='Card'>
         <div><img src={this.props.image?`https://image.tmdb.org/t/p/w200${this.props.image}`:noImage} alt={this.props.title}/></div>   

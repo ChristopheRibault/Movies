@@ -12,12 +12,9 @@ import Browse from "./components/Browse";
 
 import "./App.css";
 
-require('dotenv').config()
-
 class App extends Component {
 
   render() {
-    console.log('APIKEY', process.env)
 
     return (
       <Provider store={store}>

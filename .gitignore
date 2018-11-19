@@ -9,7 +9,7 @@ API_KEY.js
 /coverage
 
 # production
-/build
+#/build
 
 # misc
 .DS_Store

@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { SELECT_GENRE, SELECT_AVERAGE_VOTE, SELECT_RELEASE_DATE, SUBMIT_CRITERIAS } from './types';
 
-require('dotenv').config();
-
-const API_KEY = process.env.API_KEY;
+import API_KEY from '../API_KEY';
 
 export const selectGenre = e => (dispatch) => {
   const selectItem = e.target;

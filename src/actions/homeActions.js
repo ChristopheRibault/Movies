@@ -26,7 +26,6 @@ const findPop = (type, begins, ends) => (dispatch) => {
   const beginsURL = begins ? `&primary_release_date.gte=${beginsFormat}` : '';
   const endsURL = ends ? `&primary_release_date.lte=${endsFormat}` : '';
   const url = `https://api.themoviedb.org/3/discover/movie?&api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1${beginsURL}${endsURL}`;
-  console.log('url', url)
   axios.get(url)
     .then((res) => {
       dispatch({

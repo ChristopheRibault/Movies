@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 import { Switch, Route } from 'react-router';
-
-import store from './store';
 
 import Header from './components/Header';
 import Home from "./components/Home";
@@ -15,19 +12,17 @@ import "./App.css";
 class App extends Component {
 
   render() {
-
+    console.log(process.env.REACT_APP_API_KEY)
     return (
-      <Provider store={store}>
-        <div className="App">
-          <Header />
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/Browse' component={Browse} />
-            <Route path='/Contact' component={Contact} />
-            <Route path='/Results' component={Results} />
-          </Switch>
-        </div>
-      </Provider>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path='/Browse' component={Browse} />
+          <Route path='/Contact' component={Contact} />
+          <Route path='/Results' component={Results} />
+        </Switch>
+      </div>
     );
   }
 }

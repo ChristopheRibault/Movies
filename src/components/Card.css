@@ -1,21 +1,24 @@
 .Card{
     display: flex;
     flex-flow: row nowrap;
-    width: 88%;
-    margin: 3%;
-    padding: 3%;
-    height: 310px;
+    width: 96%;
+    margin: 1%;
+    padding: 1%;
     border: 1px solid grey;
     border-radius: 10px;
     box-shadow: 0 -1px 7px rgb(80, 80, 80) inset;
 }
 
 .Card .content{
-
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
+    width: 75%;
+}
+
+.Card .content h2{
+    margin-top: 0;
 }
 
 .Card .content p{
@@ -25,9 +28,14 @@
     font-size: 0.8em;
 }
 
-.Card img{
-    border-radius: 10px;
+.Card .poster{
+    width: 30%;
     max-width: 200px;
+}
+
+.Card .poster img{
+    width: 100%;
+    border-radius: 10px;
 }
 
 .Card h2{
@@ -40,8 +48,23 @@
     cursor: pointer;
 } 
 
-.mod{
+.Card .mod{
     width: 50%;
 }
 
- 
+.Card .actors {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.Card .actor_pic {
+    width: 92px;
+    height: 140px;
+}
+
+.Card .actor img {
+    border-radius: 10px;
+    width: 92px;
+}

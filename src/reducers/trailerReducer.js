@@ -3,6 +3,7 @@ import { SHOW_TRAILER, CLOSE_TRAILER } from '../actions/types';
 const initialState = {
   videoID: '',
   displayVideo: false,
+  cast: [],
 };
 
 export default function (state = initialState, action) {

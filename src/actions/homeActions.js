@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import API_KEY from '../API_KEY';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const findPop = (type, begins, ends) => (dispatch) => {
   let beginsDate;
